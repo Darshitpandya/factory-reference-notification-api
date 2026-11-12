@@ -1,0 +1,32 @@
+version: "3.9"
+services:
+  notification-api:
+    build: ..
+    ports:
+      - "3003:3003"
+    environment:
+      DATABASE_URL: postgresql://notifications:notifications@notification-db:5432/notifications
+      PORT: 3003
+    depends_on:
+      notification-db:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3003/health || exit 1"]
+      interval: 10s
+      retries: 5
+
+  notification-db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: notifications
+      POSTGRES_PASSWORD: notifications
+      POSTGRES_DB: notifications
+    volumes:
+      - notification_db:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U notifications"]
+      interval: 5s
+      retries: 10
+
+volumes:
+  notification_db:

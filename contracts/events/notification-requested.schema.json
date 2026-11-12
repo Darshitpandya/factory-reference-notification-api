@@ -1,0 +1,26 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://factory.contract/schemas/notification-requested/v1",
+  "title": "NotificationRequested",
+  "description": "Accepted event contract — do not change without factory-contract/acceptance check passing",
+  "type": "object",
+  "required": ["eventType", "payload"],
+  "additionalProperties": false,
+  "properties": {
+    "eventType": {
+      "type": "string",
+      "enum": ["invoice.issued", "invoice.overdue", "invoice.paid", "account.created", "account.suspended"],
+      "description": "STABLE — adding new values is non-breaking; removing or renaming is breaking"
+    },
+    "payload": {
+      "type": "object",
+      "description": "Event-specific payload. PII must not appear in this object at rest.",
+      "properties": {
+        "entityId": { "type": "string" },
+        "tenantId": { "type": "string" },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "metadata": { "type": "object" }
+      }
+    }
+  }
+}

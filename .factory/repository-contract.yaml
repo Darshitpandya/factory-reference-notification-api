@@ -1,0 +1,31 @@
+apiVersion: factory.contract/v1
+kind: RepositoryContract
+
+metadata:
+  name: factory-reference-notification-api
+  owner: notifications-domain
+  language: Python
+  description: Reference notification API — event compatibility, PII controls, factory reuse
+
+# Same factory release as billing API — proves "Build Once, Reuse"
+consumedRelease: "1.4.0"
+
+build:
+  install: "uv sync --frozen"
+  lint: "uv run ruff check ."
+  test: "uv run pytest -q"
+  openApiValidate: "uv run python scripts/check-event-compatibility.py"
+
+acceptance:
+  requiredChecks:
+    - factory-contract/acceptance
+  compatibilityBaselinePath: contracts/events/notification-requested.schema.json
+  tenantIsolationRequired: false
+  piiPolicies:
+    - pii-must-be-redacted-in-logs
+    - no-pii-in-retry-payloads
+
+doNotModify:
+  - .factory/repository-contract.yaml
+  - .github/workflows/ci.yml
+  - contracts/events/fixtures/

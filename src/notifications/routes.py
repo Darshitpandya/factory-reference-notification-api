@@ -5,19 +5,19 @@ Accepts notification requests, validates against JSON schema,
 persists to outbox, and returns accepted status.
 """
 
-import uuid
 import json
-import os
 import logging
+import os
+import uuid
 from pathlib import Path
 from typing import Any
 
-from fastapi import APIRouter, HTTPException, Header, Request
-from pydantic import BaseModel, field_validator
 import jsonschema
+from fastapi import APIRouter, Header, HTTPException
+from pydantic import BaseModel, field_validator
 
-from .pii import redact_dict
 from .outbox import get_connection, persist_notification
+from .pii import redact_dict
 
 router = APIRouter()
 logger = logging.getLogger("notifications")

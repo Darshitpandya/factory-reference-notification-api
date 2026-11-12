@@ -6,10 +6,11 @@ This guarantees at-least-once delivery even if the process crashes
 between acknowledgment and actual delivery.
 """
 
-import uuid
 import json
-from datetime import datetime, timezone
+import uuid
+from datetime import UTC, datetime
 from typing import Any
+
 import psycopg2
 from psycopg2.extras import RealDictCursor
 
@@ -57,7 +58,7 @@ def persist_notification(
                 event_type,
                 json.dumps(payload),
                 idempotency_key,
-                datetime.now(timezone.utc),
+                datetime.now(UTC),
             ),
         )
         conn.commit()
@@ -68,7 +69,7 @@ def mark_delivered(conn, outbox_id: str) -> None:
     with conn.cursor() as cur:
         cur.execute(
             "UPDATE notification_outbox SET status = 'DELIVERED', delivered_at = %s WHERE id = %s",
-            (datetime.now(timezone.utc), outbox_id),
+            (datetime.now(UTC), outbox_id),
         )
         conn.commit()
 
@@ -83,7 +84,7 @@ def mark_failed(conn, outbox_id: str, error: str, increment_attempt: bool = True
                     attempt_count = attempt_count + 1, updated_at = %s
                 WHERE id = %s
                 """,
-                (error[:500], datetime.now(timezone.utc), outbox_id),
+                (error[:500], datetime.now(UTC), outbox_id),
             )
         else:
             cur.execute(

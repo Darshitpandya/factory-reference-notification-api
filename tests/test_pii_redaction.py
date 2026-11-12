@@ -1,7 +1,6 @@
 """Tests for PII redaction — these must pass before any PR merges."""
 
-import pytest
-from src.notifications.pii import redact_string, redact_dict, REDACTED
+from src.notifications.pii import REDACTED, redact_dict, redact_string
 
 
 def test_redacts_email_in_string():

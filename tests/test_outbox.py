@@ -1,8 +1,7 @@
 """Tests for outbox pattern — idempotency and delivery guarantees."""
 
-import pytest
 import uuid
-from unittest.mock import MagicMock, patch, call
+from unittest.mock import MagicMock
 
 
 def make_mock_conn(existing_id: str | None = None):

@@ -1,7 +1,7 @@
 """Tests for notification API routes."""
 
-import pytest
 from fastapi.testclient import TestClient
+
 from src.notifications.app import app
 
 client = TestClient(app)

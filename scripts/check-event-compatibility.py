@@ -11,6 +11,7 @@ Usage: uv run python scripts/check-event-compatibility.py
 import json
 import sys
 from pathlib import Path
+
 import jsonschema
 
 SCHEMA_PATH = Path("contracts/events/notification-requested.schema.json")

@@ -1,11 +1,15 @@
 from fastapi import FastAPI
-from .routes import router as notifications_router
+
 from .health import router as health_router
+from .routes import router as notifications_router
 
 app = FastAPI(
     title="Notification API",
     version="1.0.0",
-    description="Reference Python notification API — event compatibility, PII controls, factory reuse proof",
+    description=(
+        "Reference Python notification API — "
+        "event compatibility, PII controls, factory reuse proof"
+    ),
     docs_url="/docs",
     redoc_url=None,
 )
@@ -15,8 +19,9 @@ app.include_router(health_router)
 
 
 if __name__ == "__main__":
-    import uvicorn
     import os
+
+    import uvicorn
 
     uvicorn.run(
         "src.notifications.app:app",

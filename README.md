@@ -1,8 +1,18 @@
 # Factory Reference Notification API
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
+[![CI](https://img.shields.io/badge/CI%2017%20tests-passing-brightgreen?style=flat-square&logo=githubactions&logoColor=white)](https://github.com/Darshitpandya/factory-reference-notification-api/actions)
+[![GitHub Stars](https://img.shields.io/github/stars/Darshitpandya/factory-reference-notification-api?style=flat-square&logo=github)](https://github.com/Darshitpandya/factory-reference-notification-api/stargazers)
+[![Factory Release](https://img.shields.io/badge/Factory%20Release-1.4.0-brightgreen?style=flat-square)](.factory/repository-contract.yaml)
+[![Python](https://img.shields.io/badge/Python-FastAPI-3776AB?style=flat-square&logo=python&logoColor=white)](src/notifications/app.py)
+[![PII Redacted](https://img.shields.io/badge/PII-redacted-orange?style=flat-square)](src/notifications/pii.py)
+[![check](https://img.shields.io/badge/required%20check-factory--contract%2Facceptance-blue?style=flat-square&logo=github)](.factory/repository-contract.yaml)
+
 **Python reference consumer proving factory reuse across different languages, schemas, and domains.**
 
 This service consumes the same factory release (`1.4.0`) as the TypeScript billing API, with its own schema, PII requirements, and delivery reliability acceptance — without copying any orchestration logic.
+
+Works with **Claude Code** · **GitHub Actions** · **Port** · **FastAPI** · **PostgreSQL**
 
 [The reuse proof](#the-reuse-proof) · [Quick start](#quick-start) · [API reference](#api-reference) · [Design patterns](#design-patterns) · [Tests](#tests) · [Factory contract](#factory-contract-integration) · [Contributing](CONTRIBUTING.md)
 

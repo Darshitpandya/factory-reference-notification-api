@@ -1,0 +1,12 @@
+{
+  "eventType": "account.reactivated",
+  "payload": {
+    "entityId": "acct_01JTEST001",
+    "tenantId": "tenant_01JTEST001",
+    "timestamp": "2026-11-14T05:30:00Z",
+    "metadata": {
+      "reactivatedBy": "billing-reconciliation",
+      "previousStatus": "suspended"
+    }
+  }
+}

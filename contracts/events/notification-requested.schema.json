@@ -9,7 +9,7 @@
   "properties": {
     "eventType": {
       "type": "string",
-      "enum": ["invoice.issued", "invoice.overdue", "invoice.paid", "account.created", "account.suspended"],
+      "enum": ["invoice.issued", "invoice.overdue", "invoice.paid", "account.created", "account.suspended", "account.reactivated"],
       "description": "STABLE — adding new values is non-breaking; removing or renaming is breaking"
     },
     "payload": {

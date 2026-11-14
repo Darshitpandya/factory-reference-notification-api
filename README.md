@@ -12,6 +12,8 @@
 
 This service consumes the same factory release (`1.4.0`) as the TypeScript billing API, with its own schema, PII requirements, and delivery reliability acceptance — without copying any orchestration logic.
 
+> **Reuse proof:** `run-notification-reuse-001` FactoryRun in Port — 5 stages ACCEPTED using factory release 1.4.0, same as billing API, different language/domain/policies.
+
 Works with **Claude Code** · **GitHub Actions** · **Port** · **FastAPI** · **PostgreSQL**
 
 [The reuse proof](#the-reuse-proof) · [Quick start](#quick-start) · [API reference](#api-reference) · [Design patterns](#design-patterns) · [Tests](#tests) · [Factory contract](#factory-contract-integration) · [Contributing](CONTRIBUTING.md)

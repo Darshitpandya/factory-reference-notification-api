@@ -26,6 +26,6 @@ if __name__ == "__main__":
     uvicorn.run(
         "src.notifications.app:app",
         host=os.environ.get("HOST", "0.0.0.0"),
-        port=int(os.environ.get("PORT", "3003")),
+        port=int(os.environ.get("PORT", os.environ.get("NOTIFICATION_PORT", "3003"))),
         reload=False,
     )

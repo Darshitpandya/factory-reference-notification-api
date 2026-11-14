@@ -6,3 +6,6 @@ dist/
 .env
 .env.local
 *.egg-info/
+use_case_*_slide_dck.md
+TODO.md
+repos_run_iteration*_output_task.md

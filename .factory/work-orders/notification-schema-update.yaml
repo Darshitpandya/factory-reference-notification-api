@@ -1,0 +1,39 @@
+apiVersion: factory.contract/v1
+kind: WorkOrder
+
+metadata:
+  id: wo-notification-schema-001
+  targetService: factory-reference-notification-api
+  factoryRelease: "1.4.0"
+  requestedBy: notifications-domain
+  createdAt: "2026-11-14T00:00:00Z"
+
+scope: |
+  Add account.reactivated event type to the notification contract.
+
+  The account.reactivated event fires when a previously suspended account
+  is reactivated (e.g. after a billing reconciliation restores access).
+  This is a non-breaking addition — existing consumers continue to process
+  the events they already know. Removing or renaming existing event types
+  would be breaking.
+
+constraints:
+  backwardCompatibility: |
+    Existing eventType enum values must not be changed or removed.
+    Adding a new value is non-breaking per the schema contract.
+  piiPolicy: |
+    The event payload must not contain PII at rest.
+    Use entityId (opaque reference) rather than customer name or email.
+  deliveryReliability: |
+    New events must follow the outbox pattern.
+    Delivery must be idempotent (retry-safe).
+  schemaValidation: |
+    All fixtures under contracts/events/fixtures/ must pass
+    validation against contracts/events/notification-requested.schema.json
+
+acceptanceCriteria:
+  - "account.reactivated is in the eventType enum"
+  - "A fixture file contracts/events/fixtures/account-reactivated.json exists and validates"
+  - "factory-contract/acceptance check passes on the PR"
+  - "17+ tests pass (uv run pytest -q)"
+  - "PII test: no personal data in event payload or logs"

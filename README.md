@@ -1,7 +1,7 @@
 # Factory Reference Notification API
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue?style=flat-square)](LICENSE)
-[![CI](https://img.shields.io/badge/CI%2017%20tests-passing-brightgreen?style=flat-square&logo=githubactions&logoColor=white)](https://github.com/Darshitpandya/factory-reference-notification-api/actions)
+[![CI](https://github.com/Darshitpandya/factory-reference-notification-api/actions/workflows/ci.yml/badge.svg)](https://github.com/Darshitpandya/factory-reference-notification-api/actions/workflows/ci.yml)
 [![GitHub Stars](https://img.shields.io/github/stars/Darshitpandya/factory-reference-notification-api?style=flat-square&logo=github)](https://github.com/Darshitpandya/factory-reference-notification-api/stargazers)
 [![Factory Release](https://img.shields.io/badge/Factory%20Release-1.4.0-brightgreen?style=flat-square)](.factory/repository-contract.yaml)
 [![Python](https://img.shields.io/badge/Python-FastAPI-3776AB?style=flat-square&logo=python&logoColor=white)](src/notifications/app.py)
@@ -213,6 +213,13 @@ acceptance:
 ```
 
 The trusted verifier uses `notification-requested.schema.json` at the base SHA to detect breaking schema changes — equivalent to what `oasdiff` does for the billing API's OpenAPI spec.
+
+### Submitting a WorkOrder for this repo
+
+The reference WorkOrder is in `.factory/work-orders/notification-schema-update.yaml`. To submit it via Port:
+
+1. Go to `app.getport.io` → Catalog → Work Orders → click **▶ Trigger Factory Run** on `wo-notification-schema-001`
+2. Or run: `pnpm factory run --work-order wo-notification-schema-001 --release 1.4.0` (requires coordinator running)
 
 ### Event schema compatibility
 

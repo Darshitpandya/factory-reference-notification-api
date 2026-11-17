@@ -18,10 +18,8 @@ Same factory release (`1.4.0`) as the TypeScript billing API. Different language
 
 ## The reuse proof
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Darshitpandya/ai-software-factory-contract/main/docs/diagrams/s46-reuse-across-repositories-dark.png">
-  <img src="https://raw.githubusercontent.com/Darshitpandya/ai-software-factory-contract/main/docs/diagrams/s46-reuse-across-repositories-light.png" alt="One factory release, two repository contracts" width="840">
-</picture>
+<img src="https://raw.githubusercontent.com/Darshitpandya/ai-software-factory-contract/main/docs/diagrams/s46-reuse-across-repositories-light.png#gh-light-mode-only" alt="One factory release, two repository contracts" width="840">
+<img src="https://raw.githubusercontent.com/Darshitpandya/ai-software-factory-contract/main/docs/diagrams/s46-reuse-across-repositories-dark.png#gh-dark-mode-only" alt="One factory release, two repository contracts" width="840">
 
 | Property | Billing API | Notification API |
 |----------|-------------|-----------------|

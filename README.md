@@ -10,13 +10,28 @@
 
 **Python reference consumer proving factory reuse across different languages, schemas, and domains.**
 
-This service consumes the same factory release (`1.4.0`) as the TypeScript billing API, with its own schema, PII requirements, and delivery reliability acceptance — without copying any orchestration logic.
-
-> **Reuse proof:** `run-notification-reuse-001` FactoryRun in Port — 5 stages ACCEPTED using factory release 1.4.0, same as billing API, different language/domain/policies.
-
-Works with **Claude Code** · **GitHub Actions** · **Port** · **FastAPI** · **PostgreSQL**
+Same factory release (`1.4.0`) as the TypeScript billing API. Different language, different schema contract, different PII requirements — zero copied orchestration logic.
 
 [The reuse proof](#the-reuse-proof) · [Quick start](#quick-start) · [API reference](#api-reference) · [Design patterns](#design-patterns) · [Tests](#tests) · [Factory contract](#factory-contract-integration) · [Contributing](CONTRIBUTING.md)
+
+---
+
+## The reuse proof
+
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/Darshitpandya/ai-software-factory-contract/main/docs/diagrams/s46-reuse-across-repositories-dark.png">
+  <img src="https://raw.githubusercontent.com/Darshitpandya/ai-software-factory-contract/main/docs/diagrams/s46-reuse-across-repositories-light.png" alt="One factory release, two repository contracts" width="840">
+</picture>
+
+| Property | Billing API | Notification API |
+|----------|-------------|-----------------|
+| Language | TypeScript | **Python** |
+| Framework | Fastify | **FastAPI** |
+| Compatibility check | OpenAPI (`oasdiff breaking`) | **JSON Schema (fixture validation)** |
+| Security constraint | Tenant isolation | **PII redaction** |
+| Delivery contract | API reliability | **Outbox, idempotency, retry** |
+| **Factory release** | **1.4.0** | **1.4.0** |
+| Orchestration code copied | — | **None** |
 
 ---
 

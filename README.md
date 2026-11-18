@@ -10,7 +10,7 @@
 
 **Python reference consumer proving factory reuse across different languages, schemas, and domains.**
 
-Same factory release (`1.4.0`) as the TypeScript billing API. Different language, different schema contract, different PII requirements — zero copied orchestration logic.
+Same factory release (`1.4.0`) as the TypeScript billing API. Different language, different schema contract, different PII requirements - zero copied orchestration logic.
 
 [The reuse proof](#the-reuse-proof) · [Quick start](#quick-start) · [API reference](#api-reference) · [Design patterns](#design-patterns) · [Tests](#tests) · [Factory contract](#factory-contract-integration) · [Contributing](CONTRIBUTING.md)
 
@@ -29,7 +29,7 @@ Same factory release (`1.4.0`) as the TypeScript billing API. Different language
 | Security constraint | Tenant isolation | **PII redaction** |
 | Delivery contract | API reliability | **Outbox, idempotency, retry** |
 | **Factory release** | **1.4.0** | **1.4.0** |
-| Orchestration code copied | — | **None** |
+| Orchestration code copied | - | **None** |
 
 ---
 
@@ -37,10 +37,10 @@ Same factory release (`1.4.0`) as the TypeScript billing API. Different language
 
 | Repo | Role |
 |---|---|
-| [`ai-software-factory-contract`](https://github.com/Darshitpandya/ai-software-factory-contract) | Factory engine — same release that runs against this repo |
+| [`ai-software-factory-contract`](https://github.com/Darshitpandya/ai-software-factory-contract) | Factory engine - same release that runs against this repo |
 | [`ai-factory-trusted-verifier`](https://github.com/Darshitpandya/ai-factory-trusted-verifier) | Posts `factory-contract/acceptance` for event schema compatibility |
-| [`factory-reference-billing-api`](https://github.com/Darshitpandya/factory-reference-billing-api) | TypeScript billing API — the other reference consumer |
-| **This repo** | Python notification API — reuse proof, event compatibility, PII controls |
+| [`factory-reference-billing-api`](https://github.com/Darshitpandya/factory-reference-billing-api) | TypeScript billing API - the other reference consumer |
+| **This repo** | Python notification API - reuse proof, event compatibility, PII controls |
 
 ---
 
@@ -56,7 +56,7 @@ The AI Software Factory Contract claims **Build Once** means reusable production
 | Security constraint | Tenant isolation | PII redaction |
 | Delivery contract | API reliability | Outbox, idempotency, retry |
 | **Factory release** | **1.4.0** | **1.4.0** |
-| Orchestration code copied | — | None |
+| Orchestration code copied | - | None |
 
 The factory's five stages run against this repo using the same coordinator, the same Claude executor, and the same SKILL.md procedures. The only difference is the `RepositoryContract` in `.factory/repository-contract.yaml`, which declares this repo's own build commands, compatibility path, and PII policies.
 
@@ -225,7 +225,7 @@ acceptance:
     - no-pii-in-retry-payloads
 ```
 
-The trusted verifier uses `notification-requested.schema.json` at the base SHA to detect breaking schema changes — equivalent to what `oasdiff` does for the billing API's OpenAPI spec.
+The trusted verifier uses `notification-requested.schema.json` at the base SHA to detect breaking schema changes - equivalent to what `oasdiff` does for the billing API's OpenAPI spec.
 
 ### Submitting a WorkOrder for this repo
 
@@ -250,7 +250,7 @@ uv run python scripts/check-event-compatibility.py
 
 ## Security
 
-- PII must not appear in logs, traces, exceptions, retries, or audit exports — `src/notifications/pii.py` is the enforcement point
+- PII must not appear in logs, traces, exceptions, retries, or audit exports - `src/notifications/pii.py` is the enforcement point
 - Delivery intent persisted before 202 response (no silent drops)
 - No secret or token fields in AGENTS.md, work order files, or PR descriptions
 - See [SECURITY.md](SECURITY.md)
@@ -265,4 +265,4 @@ See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT - see [LICENSE](LICENSE).
